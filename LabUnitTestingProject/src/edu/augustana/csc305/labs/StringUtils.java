@@ -23,11 +23,14 @@ public class StringUtils {
 	 */
 	public static String caesarCipher(String message, int keyShiftAmount) {
 		StringBuilder output = new StringBuilder();
-
+//		if (message == "THE HAPPY MOOSE") {
+//			return "UIF IBQQZ NPPTF";
+//		}
 		for (int i = 0; i < message.length(); i++) {
 			char ch = message.charAt(i);
+			
 			if (ch == ' ') {
-				output.append(message);
+				output.append(" ");
 			} else // it's an upper case letter of the alphabet
 			{
 				char newCh = (char) (ch + keyShiftAmount);
