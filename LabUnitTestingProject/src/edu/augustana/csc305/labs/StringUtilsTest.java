@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class StringUtilsTest {
 
+	//TO test whether simple letters work
 	
 	@Test
 	public void testCaesarCipherSimple() {
@@ -16,12 +17,14 @@ public class StringUtilsTest {
 		assertEquals("GOW", StringUtils.caesarCipher("EMU", 2));
 	}
 	
+	//to test whether the simple letters are replaced by letters before it
 	@Test
 	public void testCaesarCipherSimpleBackward() {
 		assertEquals("ABC", StringUtils.caesarCipher("BCD", -1));
 		assertEquals("EMU", StringUtils.caesarCipher("GOW", -2));
 	}
 
+	// To test whether a string with spaces work as well
 	@Test
 	public void testCaesarCipherWithSpaces() {
 		String s = StringUtils.caesarCipher("THE HAPPY MOOSE", 1);

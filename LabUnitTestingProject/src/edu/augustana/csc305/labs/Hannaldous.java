@@ -23,37 +23,52 @@ package edu.augustana.csc305.labs;
 public class Hannaldous {
 
 	// method one to do the thing for Monday's meeting
-	public static int howbad(int n, String[] x) {
-		int j = x.length - 1;
-		int ret = 0;
+	/* checks whether the password is bad or not depending on the length
+	   and whether it contains letters or not.*/
+	public static int howManyBadPasswords(int n, String[] passwords) {
+		int j = passwords.length - 1;
+		int numBadPswds = 0;
 
-		for (int i = 0; i < x.length; i++) {
-			if (x[j].length() < n || Help(x[j]).equals("y"))
-				ret++;
+		for (int i = 0; i < passwords.length; i++) {
+			if (passwords[j].length() < n || isStringCheck(passwords[j]).equals("y"))
+				numBadPswds++;
 			j--;
 		}
-		return ret;
+		return numBadPswds;
 	}
 
 	// method two helps, and i wrote it at 11:58 p.m. on sunday...
 	// couldn't find it on stack overflow, so I rolled my pwn.
-	static String Help(String MAYBE) {
-		try {
-			int a = Integer.parseInt(MAYBE);
-			return "n";
-		} catch (NumberFormatException e) {
-			return "y";
-		}
-	}
+	// Checks whether the string contains all letters or not and returns y if it contains all letters.
+//	static String Help(String MAYBE) {
+//		try {
+//			int a = Integer.parseInt(MAYBE);
+//			return "n";
+//		} catch (NumberFormatException e) {
+//			return "y";
+//		}
+//	}
 
+	/*Checks whether the string has anything besides letters or not*/
+	static String isStringCheck(String password) 
+	{		
+		int yeah = -1;
+		while (yeah++ < password.length() - 1) {
+			char letter = password.charAt(yeah); 
+			if (! (letter >= 'a' && letter <='z'|| letter >='A' && letter <= 'Z')) return "n"; }
+		return "y";
+	}
+	
+	
+	
 	public static void main(String[] args) {
 
-		System.out.println(Help("bigmoose$"));
-		System.out.println(Help("emusareawesome"));
-		System.out.println(Help("17"));
+		System.out.println(isStringCheck("bigmoose$"));
+		System.out.println(isStringCheck("emusareawesome"));
+		System.out.println(isStringCheck("17"));
 
 		String[] passwords = new String[] { "bigmoose$", "emusareawesome", "123goodbye", "ok&y", "17", "cat" };
-		System.out.println(howbad(8, passwords));
+		System.out.println(howManyBadPasswords(8, passwords));
 	}
 
 }
